@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import yuki.fatec.topicos.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Set;

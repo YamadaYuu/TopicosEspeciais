@@ -1,10 +1,13 @@
 package yuki.fatec.topicos.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@CrossOrigin
-public class MainController{
-	
+public class MainController {
+
+    @GetMapping
+    public String hello() {
+        return "Hello!";
+    }
 }

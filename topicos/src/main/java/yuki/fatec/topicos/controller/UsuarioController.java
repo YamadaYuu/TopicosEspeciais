@@ -9,28 +9,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import yuki.fatec.topicos.entity.Usuario;
 import yuki.fatec.topicos.service.SegurancaService;
 
-@RequestMapping (value = "/usuario")
+@RestController
+@RequestMapping(value = "/usuario")
 @CrossOrigin
 public class UsuarioController {
- 
-	@Autowired
-	private SegurancaService SegurancaService;
-	
-	@GetMapping
-	public List<Usuario> buscarDados(){
-		return SegurancaService.todosUsuarios();
-	}
-	
-	@GetMapping(value = "/{id}")
-	public Usuario BuscarID(@PathVariable("id") Long id) {
-		return SegurancaService.searchUserID(id);
-	}
+
+    @Autowired
+    private SegurancaService segurancaService;
+
+    @GetMapping
+    public List<Usuario> buscarTodos() {
+        return segurancaService.todosUsuarios();
+    }
+
+    @GetMapping(value = "/{id}")
+    public Usuario buscarPorId(@PathVariable("id") Long id) {
+         return segurancaService.searchUserId(id);
+    }
 
     @PostMapping
     public Usuario novoUsuario(@RequestBody Usuario usuario) {
-        return SegurancaService.novoUsuario(usuario);
+        return segurancaService.novoUsuario(usuario);
     }
 }
